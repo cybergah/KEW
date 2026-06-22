@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kew launcher foreground — stylized keklik (chukar) head + download arrow.
+     Bold geometry reads cleanly at small sizes. Cybergah Group. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- head + neck -->
+    <group>
+        <!-- neck/body -->
+        <path
+            android:pathData="M40,46 C40,34 50,25 62,25 C74,25 84,34 84,47 C84,58 76,66 64,68 C56,69 48,66 44,60 C41,56 40,51 40,46 Z">
+            <aapt:attr name="android:fillColor">
+                <gradient android:type="linear" android:startX="40" android:startY="25" android:endX="84" android:endY="68">
+                    <stop android:offset="0" android:color="#E3C878" />
+                    <stop android:offset="1" android:color="#9A854F" />
+                </gradient>
+            </aapt:attr>
+        </path>
+
+        <!-- cream cheek patch -->
+        <path
+            android:fillColor="#F5EDD6"
+            android:pathData="M52,34 C60,30 70,31 76,37 C72,46 62,51 53,49 C49,48 48,42 49,38 C49.6,36 50.6,35 52,34 Z" />
+
+        <!-- signature black face-stripe (chukar) -->
+        <path
+            android:strokeColor="#161616"
+            android:strokeWidth="4"
+            android:strokeLineCap="round"
+            android:pathData="M51,33 C57,31 66,32 73,38" />
+
+        <!-- eye -->
+        <path
+            android:fillColor="#161616"
+            android:pathData="M67,38 m-3,0 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0" />
+
+        <!-- red beak -->
+        <path
+            android:fillColor="#D4322A"
+            android:pathData="M83,40 L97,37 L86,47 Z" />
+
+        <!-- barred flank accents -->
+        <path
+            android:strokeColor="#5E5436"
+            android:strokeWidth="3"
+            android:strokeLineCap="round"
+            android:pathData="M58,57 l12,2 M55,63 l11,2" />
+    </group>
+
+    <!-- download arrow shaft + base under the bird -->
+    <path
+        android:strokeColor="#CAA64A"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M46,60 L46,82 M36,73 L46,83 L56,73" />
+    <path
+        android:strokeColor="#E3C878"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M34,90 L58,90" />
+</vector>

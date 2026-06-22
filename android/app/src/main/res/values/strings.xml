@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Kew</string>
+    <string name="title_activity_main">Kew</string>
+    <string name="package_name">com.cybergah.kew</string>
+    <string name="custom_url_scheme">com.cybergah.kew</string>
+</resources>
