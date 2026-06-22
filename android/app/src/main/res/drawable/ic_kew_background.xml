@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kew launcher background — mountain forest gradient. Cybergah Group. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M0,0h108v108h-108z">
+        <aapt:attr xmlns:aapt="http://schemas.android.com/aapt" name="android:fillColor">
+            <gradient
+                android:type="radial"
+                android:centerX="54"
+                android:centerY="40"
+                android:gradientRadius="80"
+                android:startColor="#1C3A25"
+                android:endColor="#08130C" />
+        </aapt:attr>
+    </path>
+    <!-- faint ridge lines -->
+    <path
+        android:strokeColor="#26CAA64A"
+        android:strokeWidth="1.5"
+        android:pathData="M0,80 L30,66 L52,78 L78,60 L108,76" />
+    <path
+        android:strokeColor="#1ACAA64A"
+        android:strokeWidth="1.5"
+        android:pathData="M0,94 L26,82 L54,92 L82,76 L108,90" />
+</vector>
