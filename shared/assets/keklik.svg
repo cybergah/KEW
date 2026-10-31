@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Kew — keklik (chukar partridge) mark. Cybergah Group.
+       Single source for every logo / icon raster: run KEW WINDOWS/tools/make-icons.swift
+       and make-mac-icons.swift after editing. -->
+  <defs>
+    <linearGradient id="kBody" x1="0.15" y1="0.05" x2="0.75" y2="1">
+      <stop offset="0" stop-color="#E3CF9B"/>
+      <stop offset="0.55" stop-color="#CDB57F"/>
+      <stop offset="1" stop-color="#A88A52"/>
+    </linearGradient>
+    <linearGradient id="kWing" x1="0" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#B49660"/>
+      <stop offset="1" stop-color="#8E7444"/>
+    </linearGradient>
+    <linearGradient id="kTail" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8F7647"/>
+      <stop offset="1" stop-color="#6E5933"/>
+    </linearGradient>
+    <linearGradient id="kBeak" x1="0" y1="0" x2="0.4" y2="1">
+      <stop offset="0" stop-color="#F0584A"/>
+      <stop offset="1" stop-color="#B92A21"/>
+    </linearGradient>
+    <radialGradient id="kBelly" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#F3E8C6" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#F3E8C6" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="kClip"><path d="M70,112 C86,90 114,82 136,86 C134,62 150,40 175,40 C200,40 215,59 214,80 C214,95 207,106 199,114 C207,129 207,147 200,163 C190,192 160,207 128,207 C92,207 64,185 58,153 C56,137 61,123 70,112 Z"/></clipPath>
+  </defs>
+
+  <!-- legs: bent ankle joint, three forward toes + a hind toe -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="#A8261F">
+      <path d="M120,196 L116,213 L120,231" stroke-width="6.5"/>
+      <path d="M120,231 L136,234 M120,231 L132,239 M120,231 L125,242 M120,231 L109,234" stroke-width="4"/>
+    </g>
+    <g stroke="#D93A2E">
+      <path d="M150,196 L147,214 L155,231" stroke-width="7"/>
+      <path d="M155,231 L172,234 M155,231 L168,240 M155,231 L161,243 M155,231 L144,234" stroke-width="4.3"/>
+    </g>
+  </g>
+  <circle cx="116" cy="213" r="3.4" fill="#A8261F"/>
+  <circle cx="147" cy="214" r="3.7" fill="#D93A2E"/>
+
+  <!-- tail -->
+  <path d="M76,118 C56,110 34,101 16,95 C27,117 42,140 63,153 Z" fill="url(#kTail)"/>
+
+  <!-- body + head as one silhouette -->
+  <path d="M70,112 C86,90 114,82 136,86 C134,62 150,40 175,40 C200,40 215,59 214,80 C214,95 207,106 199,114 C207,129 207,147 200,163 C190,192 160,207 128,207 C92,207 64,185 58,153 C56,137 61,123 70,112 Z" fill="url(#kBody)"/>
+  <g clip-path="url(#kClip)">
+    <ellipse cx="146" cy="178" rx="62" ry="34" fill="url(#kBelly)"/>
+    <!-- rim light along the back -->
+    <path d="M66,122 C84,94 114,86 138,90 C136,64 152,44 176,44" fill="none" stroke="#F6EBC8" stroke-width="3" stroke-linecap="round" opacity="0.55"/>
+    <!-- flank bars (chukar: black + chestnut) -->
+    <g stroke-linecap="round" stroke-width="4.5">
+      <path d="M165,128 L157,160" stroke="#2A2318"/>
+      <path d="M173,129 L165,163" stroke="#8A4B2A"/>
+      <path d="M181,131 L173,165" stroke="#2A2318"/>
+      <path d="M189,134 L181,166" stroke="#8A4B2A"/>
+    </g>
+  </g>
+
+  <!-- wing with feather edges -->
+  <path d="M74,128 C90,102 128,98 152,116 C162,136 152,160 126,166 C100,170 80,154 74,128 Z" fill="url(#kWing)"/>
+  <g fill="none" stroke="#D9C28E" stroke-width="2.4" stroke-linecap="round" opacity="0.75">
+    <path d="M94,146 C108,152 124,152 138,146"/>
+    <path d="M90,134 C106,142 126,142 144,134"/>
+    <path d="M92,122 C108,128 128,128 146,122"/>
+  </g>
+
+  <!-- cream face + throat -->
+  <path d="M183,72 C198,71 212,80 213,93 C211,109 200,119 186,122 C171,122 159,112 158,98 C158,85 169,74 183,72 Z" fill="#F7EFD8"/>
+  <!-- the chukar band: through the eye, down the neck, round the throat -->
+  <path d="M212,73 C200,68 180,68 168,79 C157,90 159,111 176,120 C186,126 199,122 205,113" fill="none" stroke="#1B1A16" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- eye with the red eye-ring -->
+  <circle cx="189" cy="72" r="8.5" fill="#E04A3A"/>
+  <circle cx="189" cy="72" r="5.8" fill="#16140F"/>
+  <circle cx="191" cy="69.8" r="1.9" fill="#FFF8E6"/>
+
+  <!-- beak -->
+  <path d="M207,67 C222,67 233,74 238,82 C228,87 217,91 207,91 C204,83 204,75 207,67 Z" fill="url(#kBeak)"/>
+  <path d="M208,79 C218,79 228,80 237,82" fill="none" stroke="#8E1F18" stroke-width="1.6" stroke-linecap="round" opacity="0.6"/>
+</svg>

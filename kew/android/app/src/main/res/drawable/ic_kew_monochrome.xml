@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Kew monochrome layer for Android 13+ themed icons (system tints it). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:fillColor="#000000"
+        android:pathData="M40,46 C40,34 50,25 62,25 C74,25 84,34 84,47 C84,58 76,66 64,68 C56,69 48,66 44,60 C41,56 40,51 40,46 Z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M83,40 L97,37 L86,47 Z" />
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M46,58 L46,84 M35,73 L46,85 L57,73" />
+    <path
+        android:strokeColor="#000000"
+        android:strokeWidth="5"
+        android:strokeLineCap="round"
+        android:pathData="M34,92 L58,92" />
+</vector>
