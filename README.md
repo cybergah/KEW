@@ -139,6 +139,6 @@ npm run dist:mac      # macOS DMG (run on a Mac)
 
 **Cybergah Group** · [cybergah.com](https://cybergah.com) · info@cybergah.com
 
-© 2026 · Kew v2.0.0 · *Free as in freedom.* 🕊️
+© 2026 · Kew v2.0.0 · *Free as in freedom.*
 
 </div>
