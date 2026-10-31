@@ -2,7 +2,7 @@
 
 <img src="shared/assets/logo.png" width="120" alt="Kew logo"/>
 
-# 🦃 KEW v2
+# KEW v2
 
 **Anonymous · Free · Open** video downloader
 
