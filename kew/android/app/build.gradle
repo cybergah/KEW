@@ -1,0 +1,102 @@
+apply plugin: 'com.android.application'
+
+// Release signing never comes from the source tree. Set either environment
+// variables
+//   KEW_KEYSTORE           path to kew-release.keystore (kept OUTSIDE the project)
+//   KEW_KEYSTORE_PASSWORD  store password
+//   KEW_KEY_ALIAS          key alias (default: kew)
+//   KEW_KEY_PASSWORD       key password (default: the store password)
+// or the same values as kew.keystore / kew.keystorePassword / kew.keyAlias /
+// kew.keyPassword in ~/.gradle/gradle.properties. Without them the release
+// APK is built unsigned (app-release-unsigned.apk).
+def signingValue = { String env, String prop -> System.getenv(env) ?: project.findProperty(prop) }
+def releaseKeystore = signingValue('KEW_KEYSTORE', 'kew.keystore')
+def releaseStorePassword = signingValue('KEW_KEYSTORE_PASSWORD', 'kew.keystorePassword')
+
+android {
+    namespace "com.cybergah.kew"
+    compileSdk rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.cybergah.kew"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 2
+        versionName "2.0.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        // yt-dlp / python is shipped per-ABI. Limit to arm64 (virtually every
+        // modern phone) to keep the APK lean.
+        ndk {
+            abiFilters 'arm64-v8a'
+        }
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    signingConfigs {
+        release {
+            if (releaseKeystore) {
+                storeFile file(releaseKeystore)
+                storePassword releaseStorePassword
+                keyAlias signingValue('KEW_KEY_ALIAS', 'kew.keyAlias') ?: 'kew'
+                keyPassword signingValue('KEW_KEY_PASSWORD', 'kew.keyPassword') ?: releaseStorePassword
+            }
+        }
+    }
+    lint {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+    // youtubedl-android executes the python/yt-dlp binaries from the extracted
+    // native lib dir, so they must NOT be compressed-in-place.
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true
+        }
+        resources {
+            excludes += ['META-INF/LICENSE.md', 'META-INF/LICENSE-notice.md', 'META-INF/DEPENDENCIES']
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig releaseKeystore ? signingConfigs.release : null
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    // On-device extraction — yt-dlp + ffmpeg, no server required.
+    implementation "io.github.junkfood02.youtubedl-android:library:0.18.1"
+    implementation "io.github.junkfood02.youtubedl-android:ffmpeg:0.18.1"
+    // MediaSession + MediaStyle notification (lock-screen player controls)
+    implementation "androidx.media:media:1.7.0"
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}
