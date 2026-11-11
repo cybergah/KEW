@@ -18,6 +18,7 @@ YouTube · TikTok · Instagram · X · Facebook · Vimeo · Reddit · SoundCloud
 
 [![Release](https://img.shields.io/github/v/release/cybergah8-lang/KEW?label=latest&color=4a7c59)](https://github.com/cybergah8-lang/KEW/releases/latest)
 [![License](https://img.shields.io/badge/license-GPL--3.0-blue)](LICENSE)
+[![Build](https://github.com/cybergah/KEW/actions/workflows/build.yml/badge.svg)](https://github.com/cybergah/KEW/actions/workflows/build.yml)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Windows%20%7C%20macOS-lightgrey)](https://github.com/cybergah8-lang/KEW/releases/latest)
 
 </div>
