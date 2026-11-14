@@ -349,10 +349,15 @@ function startDetectServer() {
 // Clipboard fallback (opt-in).
 let lastClip = "";
 
-function clipTick() {
+// Electron 44+ returns a Promise from clipboard.readText(); await works for both.
+async function readClip() {
+  try { return String((await clipboard.readText()) || "").trim(); } catch { return null; }
+}
+
+async function clipTick() {
   if (!prefs.watchClipboard || !win) return;
-  let txt = "";
-  try { txt = (clipboard.readText() || "").trim(); } catch { return; }
+  const txt = await readClip();
+  if (txt === null) return;
   if (!txt || txt === lastClip) return;
   lastClip = txt;
   if (txt.length > 500 || /\s/.test(txt)) return;
@@ -374,14 +379,13 @@ if (!app.requestSingleInstanceLock()) {
     // Global shortcut: Ctrl+Shift+K → offer the clipboard link for download
     // (any site — same confirmation dialog as detection).
     try {
-      globalShortcut.register("Control+Shift+K", () => {
-        let txt = "";
-        try { txt = (clipboard.readText() || "").trim(); } catch {}
+      globalShortcut.register("Control+Shift+K", async () => {
+        const txt = await readClip();
         if (txt && !/\s/.test(txt)) offerDownload(txt, "", true);
       });
     } catch {}
     setInterval(clipTick, 1200);
-    try { lastClip = (clipboard.readText() || "").trim(); } catch {}
+    readClip().then((t) => { if (t) lastClip = t; });
     app.on("activate", () => {
       if (BrowserWindow.getAllWindows().length === 0) createWindow();
       else showWin();
