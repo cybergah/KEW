@@ -8,6 +8,9 @@ const config: CapacitorConfig = {
   webDir: "dist",
   android: {
     allowMixedContent: true,
+    // targetSdk 35 makes Android 15 draw the app under the system bars.
+    // "auto" keeps the WebView between the bars, as before.
+    adjustMarginsForEdgeToEdge: "auto",
   },
   server: {
     androidScheme: "https",
